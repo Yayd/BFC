@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BFC.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,5 +18,10 @@ namespace BFC
             InitializeComponent();
         }
 
+        private void AddProductButton_Click(object sender, EventArgs e)
+        {
+            var addProductForm = new AddProduct();
+            addProductForm.ShowDialog();
+        }
     }
 }
