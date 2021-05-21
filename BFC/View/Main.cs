@@ -1,4 +1,5 @@
-﻿using BFC.View;
+﻿using BFC.Model;
+using BFC.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace BFC
 {
     public partial class Main : Form
     {
+        private EntityManager em = new EntityManager(); 
         public Main()
         {
             InitializeComponent();
