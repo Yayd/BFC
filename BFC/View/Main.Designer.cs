@@ -61,7 +61,7 @@ namespace BFC
             this.ProductExitButton = new System.Windows.Forms.Button();
             this.ProductCalculateButton = new System.Windows.Forms.Button();
             this.ProductResultUnitsLabel = new System.Windows.Forms.Label();
-            this.ProductResultO = new System.Windows.Forms.TextBox();
+            this.ProductResultOutput = new System.Windows.Forms.TextBox();
             this.ProductResultLabel = new System.Windows.Forms.Label();
             this.WeightUnitsLabel = new System.Windows.Forms.Label();
             this.ProductWeightInput = new System.Windows.Forms.TextBox();
@@ -147,6 +147,7 @@ namespace BFC
             this.CalculateButton.TabIndex = 21;
             this.CalculateButton.Text = "Рассчитать";
             this.CalculateButton.UseVisualStyleBackColor = true;
+            this.CalculateButton.Click += new System.EventHandler(this.CalculateButton_Click);
             // 
             // ResultAfterLabel
             // 
@@ -196,22 +197,25 @@ namespace BFC
             this.SecondFormulaRB.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SecondFormulaRB.Location = new System.Drawing.Point(6, 38);
             this.SecondFormulaRB.Name = "SecondFormulaRB";
-            this.SecondFormulaRB.Size = new System.Drawing.Size(106, 25);
+            this.SecondFormulaRB.Size = new System.Drawing.Size(168, 25);
             this.SecondFormulaRB.TabIndex = 1;
             this.SecondFormulaRB.TabStop = true;
-            this.SecondFormulaRB.Text = "Формула 2";
+            this.SecondFormulaRB.Tag = "1";
+            this.SecondFormulaRB.Text = "Харриса-Бенедикта";
             this.SecondFormulaRB.UseVisualStyleBackColor = true;
             // 
             // FirstFormulaRB
             // 
             this.FirstFormulaRB.AutoSize = true;
+            this.FirstFormulaRB.Checked = true;
             this.FirstFormulaRB.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FirstFormulaRB.Location = new System.Drawing.Point(6, 7);
             this.FirstFormulaRB.Name = "FirstFormulaRB";
-            this.FirstFormulaRB.Size = new System.Drawing.Size(106, 25);
+            this.FirstFormulaRB.Size = new System.Drawing.Size(192, 25);
             this.FirstFormulaRB.TabIndex = 0;
             this.FirstFormulaRB.TabStop = true;
-            this.FirstFormulaRB.Text = "Формула 1";
+            this.FirstFormulaRB.Tag = "0";
+            this.FirstFormulaRB.Text = "Миффлина-Сан Жеора";
             this.FirstFormulaRB.UseVisualStyleBackColor = true;
             // 
             // FormuaLabel
@@ -245,8 +249,13 @@ namespace BFC
             // 
             // ActivityCombobox
             // 
+            this.ActivityCombobox.AllowDrop = true;
+            this.ActivityCombobox.CausesValidation = false;
             this.ActivityCombobox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ActivityCombobox.FormattingEnabled = true;
+            this.ActivityCombobox.Items.AddRange(new object[] {
+            "Физическая нагрузка отсутствует или минимальная",
+            "Тренировки средней тяжести 3 раза в неделю"});
             this.ActivityCombobox.Location = new System.Drawing.Point(224, 192);
             this.ActivityCombobox.Name = "ActivityCombobox";
             this.ActivityCombobox.Size = new System.Drawing.Size(236, 29);
@@ -279,6 +288,8 @@ namespace BFC
             this.HeightInput.Name = "HeightInput";
             this.HeightInput.Size = new System.Drawing.Size(101, 29);
             this.HeightInput.TabIndex = 10;
+            this.HeightInput.Text = "150";
+            this.HeightInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // HightLabel
             // 
@@ -307,6 +318,8 @@ namespace BFC
             this.WeightInput.Name = "WeightInput";
             this.WeightInput.Size = new System.Drawing.Size(101, 29);
             this.WeightInput.TabIndex = 7;
+            this.WeightInput.Text = "60";
+            this.WeightInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // WeightLabel
             // 
@@ -335,6 +348,8 @@ namespace BFC
             this.AgeInput.Name = "AgeInput";
             this.AgeInput.Size = new System.Drawing.Size(101, 29);
             this.AgeInput.TabIndex = 4;
+            this.AgeInput.Text = "13";
+            this.AgeInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // AgeLabel
             // 
@@ -382,6 +397,7 @@ namespace BFC
             // MaleRadioButton
             // 
             this.MaleRadioButton.AutoSize = true;
+            this.MaleRadioButton.Checked = true;
             this.MaleRadioButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MaleRadioButton.Location = new System.Drawing.Point(6, 15);
             this.MaleRadioButton.Name = "MaleRadioButton";
@@ -396,7 +412,7 @@ namespace BFC
             this.Products.Controls.Add(this.ProductExitButton);
             this.Products.Controls.Add(this.ProductCalculateButton);
             this.Products.Controls.Add(this.ProductResultUnitsLabel);
-            this.Products.Controls.Add(this.ProductResultO);
+            this.Products.Controls.Add(this.ProductResultOutput);
             this.Products.Controls.Add(this.ProductResultLabel);
             this.Products.Controls.Add(this.WeightUnitsLabel);
             this.Products.Controls.Add(this.ProductWeightInput);
@@ -432,6 +448,7 @@ namespace BFC
             this.ProductCalculateButton.TabIndex = 14;
             this.ProductCalculateButton.Text = "Рассчитать";
             this.ProductCalculateButton.UseVisualStyleBackColor = true;
+            this.ProductCalculateButton.Click += new System.EventHandler(this.ProductCalculateButton_Click);
             // 
             // ProductResultUnitsLabel
             // 
@@ -443,15 +460,16 @@ namespace BFC
             this.ProductResultUnitsLabel.TabIndex = 13;
             this.ProductResultUnitsLabel.Text = "ккал.";
             // 
-            // ProductResultO
+            // ProductResultOutput
             // 
-            this.ProductResultO.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ProductResultO.Enabled = false;
-            this.ProductResultO.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ProductResultO.Location = new System.Drawing.Point(156, 373);
-            this.ProductResultO.Name = "ProductResultO";
-            this.ProductResultO.Size = new System.Drawing.Size(155, 29);
-            this.ProductResultO.TabIndex = 12;
+            this.ProductResultOutput.AccessibleRole = System.Windows.Forms.AccessibleRole.Clock;
+            this.ProductResultOutput.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ProductResultOutput.Enabled = false;
+            this.ProductResultOutput.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ProductResultOutput.Location = new System.Drawing.Point(156, 373);
+            this.ProductResultOutput.Name = "ProductResultOutput";
+            this.ProductResultOutput.Size = new System.Drawing.Size(155, 29);
+            this.ProductResultOutput.TabIndex = 12;
             // 
             // ProductResultLabel
             // 
@@ -480,6 +498,8 @@ namespace BFC
             this.ProductWeightInput.Name = "ProductWeightInput";
             this.ProductWeightInput.Size = new System.Drawing.Size(155, 29);
             this.ProductWeightInput.TabIndex = 9;
+            this.ProductWeightInput.Text = "0";
+            this.ProductWeightInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // ProductWeightLabel
             // 
@@ -611,12 +631,14 @@ namespace BFC
             // 
             // ProductsCombobox
             // 
+            this.ProductsCombobox.DisplayMember = "Name";
             this.ProductsCombobox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ProductsCombobox.FormattingEnabled = true;
             this.ProductsCombobox.Location = new System.Drawing.Point(162, 36);
             this.ProductsCombobox.Name = "ProductsCombobox";
             this.ProductsCombobox.Size = new System.Drawing.Size(210, 29);
             this.ProductsCombobox.TabIndex = 3;
+            this.ProductsCombobox.SelectedIndexChanged += new System.EventHandler(this.ProductsCombobox_SelectedIndexChanged);
             // 
             // Main
             // 
@@ -693,7 +715,7 @@ namespace BFC
         private System.Windows.Forms.Label ProductResultLabel;
         private System.Windows.Forms.Label WeightUnitsLabel;
         private System.Windows.Forms.TextBox ProductWeightInput;
-        private System.Windows.Forms.TextBox ProductResultO;
+        private System.Windows.Forms.TextBox ProductResultOutput;
         private System.Windows.Forms.Button ProductExitButton;
     }
 }
