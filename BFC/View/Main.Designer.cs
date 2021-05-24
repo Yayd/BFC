@@ -155,9 +155,9 @@ namespace BFC
             this.ResultAfterLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ResultAfterLabel.Location = new System.Drawing.Point(317, 376);
             this.ResultAfterLabel.Name = "ResultAfterLabel";
-            this.ResultAfterLabel.Size = new System.Drawing.Size(31, 21);
+            this.ResultAfterLabel.Size = new System.Drawing.Size(45, 21);
             this.ResultAfterLabel.TabIndex = 20;
-            this.ResultAfterLabel.Text = "см.";
+            this.ResultAfterLabel.Text = "ккал.";
             // 
             // ResutlOutput
             // 
