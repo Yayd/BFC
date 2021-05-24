@@ -5,6 +5,7 @@ using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
 
@@ -12,9 +13,19 @@ namespace BFC.Model
 {
     public class EntityManager
     {
-		private readonly ISessionFactory sessionFactory = CreateSessionFactory(); //Фабрика соединений 
+		private readonly ISessionFactory sessionFactory;
+		private bool IsCreate = false;
 
-		public void SaveOrUpdate<T>(T entity)
+        public EntityManager()
+        {
+			sessionFactory = CreateSessionFactory(); //Фабрика соединений 
+            if (IsCreate)
+            {
+                ExecuteSQLScript();
+            }
+        }
+
+        public void SaveOrUpdate<T>(T entity)
         {
 			using (var session = sessionFactory.OpenSession())
             {
@@ -61,7 +72,7 @@ namespace BFC.Model
         }
 
 		//Настройка соединения с БД
-		private static ISessionFactory CreateSessionFactory()
+		private ISessionFactory CreateSessionFactory()
 		{
 			return Fluently.Configure()
 			  .Database(
@@ -74,12 +85,29 @@ namespace BFC.Model
 			  .BuildSessionFactory();
 		}
 
-		private static void BuildSchema(Configuration config)
+		private void ExecuteSQLScript()
+        {
+			Initializer initializer = new Initializer();
+			string command = initializer.ReadScript();
+			
+			using (var session = sessionFactory.OpenSession())
+			{
+				using (var transaction = session.BeginTransaction())
+				{
+					var query = session.CreateSQLQuery(command).ExecuteUpdate();
+					session.Flush();
+					transaction.Commit();
+				}
+			}
+		}
+
+		private void BuildSchema(Configuration config)
 		{
 			if (!File.Exists("BFC.db"))
             {
 				new SchemaExport(config)
 					.Create(true, true);
+				IsCreate = true;
 			}
             else
             {
