@@ -2,18 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-using Newtonsoft.Json.JsonConvert;
+using Newtonsoft.Json;
 
 namespace BFC.Model.FieldSaver
 {
     public class FieldController
     {
         private Dictionary<string, string> fields = null;
-        private string pathToJsonFields = "";
+        private string pathToJsonFields = "data.json";
 
         public FieldController()
         {
-
         }
 
         public FieldController(Dictionary<string, string> fields)
@@ -26,51 +25,51 @@ namespace BFC.Model.FieldSaver
             this.pathToJsonFields = pathToJsonFields;            
         }
 
-        public void readFields()
+        public void ReadFields()
         {
             string json = File.ReadAllText(pathToJsonFields);
-            this.fields = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+            fields = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
         }
 
-        public void writeFields() 
+        public void WriteFields() 
         {
-            string json = JsonConvert.SerializeObject(this.fields);
+            string json = JsonConvert.SerializeObject(fields);
             File.WriteAllText(pathToJsonFields, json);
         }
 
-        public void setPath(string path)
+        public void SetPath(string path)
         {
-            this.pathToJsonFields = path;
+            pathToJsonFields = path;
         }
 
-        public string getPath()
+        public string GetPath()
         {
-            return this.pathToJsonFields;
+            return pathToJsonFields;
         }
 
-        public void setField(string name, string value)
+        public void SetField(string name, string value)
         {
-            this.fields[name] = value;
+            fields[name] = value;
         }
 
-        public void setCoupleFields(Dictionary<string, string> fields)
+        public void SetCoupleFields(Dictionary<string, string> fields)
         {
             this.fields = fields;
         }
 
-        public void deleteField(string name)
+        public void DeleteField(string name)
         {
-            this.fields.Remove(name);
+            fields.Remove(name);
         }
 
-        public Dictionary<string, string> getFields() 
+        public Dictionary<string, string> GetFields() 
         {
             return fields;
         }
 
-        public void clearFields() 
+        public void ClearFields() 
         {
-            this.fields.Clear();                       
+            fields.Clear();                       
         }
 
     }
