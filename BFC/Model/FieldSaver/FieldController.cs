@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-using Newtonsoft.Json.JsonConvert;
+using Newtonsoft.Json;
+//using Newtonsoft.Json.JsonConvert; - вот так не работает
 
 namespace BFC.Model.FieldSaver
 {
