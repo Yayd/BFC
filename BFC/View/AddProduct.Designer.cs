@@ -99,6 +99,7 @@ namespace BFC.View
             this.CaloriesInput.Name = "CaloriesInput";
             this.CaloriesInput.Size = new System.Drawing.Size(86, 29);
             this.CaloriesInput.TabIndex = 5;
+            this.CaloriesInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CaloriesInput_KeyPress);
             // 
             // ProteinsInput
             // 
@@ -107,6 +108,7 @@ namespace BFC.View
             this.ProteinsInput.Name = "ProteinsInput";
             this.ProteinsInput.Size = new System.Drawing.Size(86, 29);
             this.ProteinsInput.TabIndex = 6;
+            this.ProteinsInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ProteinsInput_KeyPress);
             // 
             // FatInput
             // 
@@ -115,6 +117,7 @@ namespace BFC.View
             this.FatInput.Name = "FatInput";
             this.FatInput.Size = new System.Drawing.Size(86, 29);
             this.FatInput.TabIndex = 7;
+            this.FatInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FatInput_KeyPress);
             // 
             // CarboInput
             // 
@@ -123,6 +126,7 @@ namespace BFC.View
             this.CarboInput.Name = "CarboInput";
             this.CarboInput.Size = new System.Drawing.Size(86, 29);
             this.CarboInput.TabIndex = 8;
+            this.CarboInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CarboInput_KeyPress);
             // 
             // ProteinsLabel
             // 
@@ -163,6 +167,7 @@ namespace BFC.View
             this.AddButton.TabIndex = 12;
             this.AddButton.Text = "Добавить";
             this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // ExitButton
             // 
