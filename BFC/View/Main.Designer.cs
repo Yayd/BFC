@@ -31,7 +31,6 @@ namespace BFC
         {
             this.AllTabs = new System.Windows.Forms.TabControl();
             this.Calculator = new System.Windows.Forms.TabPage();
-            this.ExitButton = new System.Windows.Forms.Button();
             this.CalculateButton = new System.Windows.Forms.Button();
             this.ResultAfterLabel = new System.Windows.Forms.Label();
             this.ResutlOutput = new System.Windows.Forms.TextBox();
@@ -58,7 +57,6 @@ namespace BFC
             this.FemaleRadioButton = new System.Windows.Forms.RadioButton();
             this.MaleRadioButton = new System.Windows.Forms.RadioButton();
             this.Products = new System.Windows.Forms.TabPage();
-            this.ProductExitButton = new System.Windows.Forms.Button();
             this.ProductCalculateButton = new System.Windows.Forms.Button();
             this.ProductResultUnitsLabel = new System.Windows.Forms.Label();
             this.ProductResultOutput = new System.Windows.Forms.TextBox();
@@ -98,7 +96,6 @@ namespace BFC
             // 
             // Calculator
             // 
-            this.Calculator.Controls.Add(this.ExitButton);
             this.Calculator.Controls.Add(this.CalculateButton);
             this.Calculator.Controls.Add(this.ResultAfterLabel);
             this.Calculator.Controls.Add(this.ResutlOutput);
@@ -128,20 +125,10 @@ namespace BFC
             this.Calculator.Text = "Калькулятор";
             this.Calculator.UseVisualStyleBackColor = true;
             // 
-            // ExitButton
-            // 
-            this.ExitButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ExitButton.Location = new System.Drawing.Point(305, 426);
-            this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(155, 37);
-            this.ExitButton.TabIndex = 22;
-            this.ExitButton.Text = "Выход";
-            this.ExitButton.UseVisualStyleBackColor = true;
-            // 
             // CalculateButton
             // 
             this.CalculateButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CalculateButton.Location = new System.Drawing.Point(36, 426);
+            this.CalculateButton.Location = new System.Drawing.Point(156, 429);
             this.CalculateButton.Name = "CalculateButton";
             this.CalculateButton.Size = new System.Drawing.Size(155, 37);
             this.CalculateButton.TabIndex = 21;
@@ -409,7 +396,6 @@ namespace BFC
             // 
             // Products
             // 
-            this.Products.Controls.Add(this.ProductExitButton);
             this.Products.Controls.Add(this.ProductCalculateButton);
             this.Products.Controls.Add(this.ProductResultUnitsLabel);
             this.Products.Controls.Add(this.ProductResultOutput);
@@ -429,20 +415,10 @@ namespace BFC
             this.Products.Text = "Продукты";
             this.Products.UseVisualStyleBackColor = true;
             // 
-            // ProductExitButton
-            // 
-            this.ProductExitButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ProductExitButton.Location = new System.Drawing.Point(305, 426);
-            this.ProductExitButton.Name = "ProductExitButton";
-            this.ProductExitButton.Size = new System.Drawing.Size(155, 37);
-            this.ProductExitButton.TabIndex = 15;
-            this.ProductExitButton.Text = "Выход";
-            this.ProductExitButton.UseVisualStyleBackColor = true;
-            // 
             // ProductCalculateButton
             // 
             this.ProductCalculateButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ProductCalculateButton.Location = new System.Drawing.Point(36, 426);
+            this.ProductCalculateButton.Location = new System.Drawing.Point(156, 431);
             this.ProductCalculateButton.Name = "ProductCalculateButton";
             this.ProductCalculateButton.Size = new System.Drawing.Size(155, 37);
             this.ProductCalculateButton.TabIndex = 14;
@@ -692,7 +668,6 @@ namespace BFC
         private System.Windows.Forms.Label ResultAfterLabel;
         private System.Windows.Forms.TextBox ResutlOutput;
         private System.Windows.Forms.Label ResultLabel;
-        private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Button CalculateButton;
         private System.Windows.Forms.Button AddProductButton;
         private System.Windows.Forms.Label ProductsLabel;
@@ -716,7 +691,6 @@ namespace BFC
         private System.Windows.Forms.Label WeightUnitsLabel;
         private System.Windows.Forms.TextBox ProductWeightInput;
         private System.Windows.Forms.TextBox ProductResultOutput;
-        private System.Windows.Forms.Button ProductExitButton;
     }
 }
 

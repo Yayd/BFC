@@ -9,6 +9,8 @@ INSERT INTO Category VALUES (8, 'Сахар, кондитерские издел
 INSERT INTO Category VALUES (9, 'Овощи');
 INSERT INTO Category VALUES (10, 'Фрукты, ягоды, орехи');
 INSERT INTO Category VALUES (11, 'Напитки');
+INSERT INTO Category VALUES (12, 'Другое');
+
 
 INSERT INTO FoodList (Name, Proteins, Fats, Carbohydrates, Calories, Category_id) VALUES ('Хлеб ржаной', 5.1, 1, 42.5, 204, 1);
 INSERT INTO FoodList (Name, Proteins, Fats, Carbohydrates, Calories, Category_id) VALUES ('Хлеб пшеничный', 5.8, 0.5, 56.1, 268, 1);

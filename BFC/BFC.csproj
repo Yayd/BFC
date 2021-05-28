@@ -5,7 +5,6 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Controller\"/>
     <Compile Remove="Resources\**" />
     <EmbeddedResource Remove="Resources\**" />
     <EntityDeploy Remove="Resources\**" />
@@ -20,8 +19,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FluentNHibernate" Version="3.1.0"/>
-    <PackageReference Include="System.Data.SQLite" Version="1.0.113.7"/>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1"/>
+    <PackageReference Include="FluentNHibernate" Version="3.1.0" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.114" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 </Project>

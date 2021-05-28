@@ -40,27 +40,21 @@ namespace BFC
             [Plan.gain] = "Набор веса"
         };
 
-        private readonly SortedDictionary<int, FoodList> _products;
+        //private readonly SortedDictionary<int, FoodList> _products;//это нам не нужно
 
         private readonly EntityManager _entityManager;
+        public IList<FoodList> _listOfProducts { get; set; }//создал ilist вместо сорт. словарика, изменил модификатор доступа, стоить обсудить опасности
         public SortedDictionary<string, int> UserCache { get; set; }
+        private readonly FillInterface _foodDataBase;
         public Main()
         {
             _entityManager = new EntityManager();
-            //Это заглушка
-            _products = new SortedDictionary<int, FoodList>
-            {
-                [0] = new FoodList
-                {
-                    Name = "Банан",
-                    Proteins = 0,
-                    Fats = 30,
-                    Carbohydrates = 20,
-                    Calories = 260
-                }
-            };
-            //--конец заглушки
-
+            _listOfProducts = new List<FoodList> {};//создаём лист
+            _foodDataBase = new FillInterface();
+            //_products = _foodDataBase.FillProducts(_entityManager); //изначально (Не мной) планировалось обращаться к классу чтобы перелопатить ilist в SortedDictionary
+            //_listOfProducts = _entityManager.FindAll<FoodList>();//можно реализовать так, но это не хоршо, мы пропустили контроллер.
+            // = _foodDataBase.GetProductsFromDBFood(_entityManager);//используем это так
+            //переместил в InitializeProducts
             InitializeComponent();
             InitializeActivityCombobox();
             InitializePlanCombobox();
@@ -84,17 +78,15 @@ namespace BFC
 
         private void InitializeProducts()
         {
+            _listOfProducts = _foodDataBase.GetProductsFromDBFood(_entityManager);
             var bindingSource = new BindingSource
             {
-                DataSource = _products
+                DataSource = _listOfProducts//заменил на ilist
             };
 
             ProductsCombobox.DataSource = bindingSource;
             ProductsCombobox.DisplayMember = "Value.Name";
-
-            //ИЗМЕНИ ЭТО ПОЛЕ НА ID ПОСЛЕ ТОГО КАК ДОБАВИШЬ ПОДКЛЮЧЕНИЕ К БД!!!
-            ProductsCombobox.ValueMember = "Proteins";//<<<===ВОТ ТУТ
-            //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            ProductsCombobox.ValueMember = "Id";
         }
 
 
@@ -103,6 +95,7 @@ namespace BFC
         {
             var addProductForm = new AddProduct();
             addProductForm.ShowDialog();
+            InitializeProducts();//добавл для обновления комбобокса с продуктами
         }
 
         /// <summary>
@@ -137,7 +130,7 @@ namespace BFC
         {
             var product = ProductsCombobox.SelectedIndex;
             var weight = double.Parse(ProductWeightInput.Text);
-            var calories = (double)_products[product].Calories;
+            var calories = (double)_listOfProducts[product].Calories;
 
             var result = Calculate.GetProductCalories(weight, calories);
             ProductResultOutput.Text = result;
@@ -147,10 +140,10 @@ namespace BFC
         {
             var product = ProductsCombobox.SelectedIndex;
 
-            CaloriesOutput.Text = _products[product].Calories.ToString();
-            ProteinsOutput.Text = _products[product].Proteins.ToString();
-            FatsOutput.Text = _products[product].Fats.ToString();
-            CarboOutput.Text = _products[product].Carbohydrates.ToString();
+            CaloriesOutput.Text = _listOfProducts[product].Calories.ToString();
+            ProteinsOutput.Text = _listOfProducts[product].Proteins.ToString();
+            FatsOutput.Text = _listOfProducts[product].Fats.ToString();
+            CarboOutput.Text = _listOfProducts[product].Carbohydrates.ToString();
         }
     }
 }
