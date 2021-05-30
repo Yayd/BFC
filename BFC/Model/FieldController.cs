@@ -44,6 +44,11 @@ namespace BFC.Model
 
         public Dictionary<string, string> ReadFields()
         {
+            if (!File.Exists(pathToJsonFields))
+            {
+                var a = File.Create(pathToJsonFields);
+                a.Close();
+            }
             string json = File.ReadAllText(pathToJsonFields);
             fields = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
             return fields;
