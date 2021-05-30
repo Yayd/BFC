@@ -53,6 +53,7 @@ namespace BFC
             this.FemaleRadioButton = new System.Windows.Forms.RadioButton();
             this.MaleRadioButton = new System.Windows.Forms.RadioButton();
             this.Products = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
             this.ProductResultUnitsLabel = new System.Windows.Forms.Label();
             this.ProductResultOutput = new System.Windows.Forms.TextBox();
             this.ProductResultLabel = new System.Windows.Forms.Label();
@@ -70,7 +71,6 @@ namespace BFC
             this.FatsLabel = new System.Windows.Forms.Label();
             this.AddProductButton = new System.Windows.Forms.Button();
             this.ProductsCombobox = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.AllTabs.SuspendLayout();
             this.Calculator.SuspendLayout();
             this.SexBox.SuspendLayout();
@@ -161,6 +161,7 @@ namespace BFC
             // 
             // PlanCombobox
             // 
+            this.PlanCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PlanCombobox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.PlanCombobox.FormattingEnabled = true;
             this.PlanCombobox.Location = new System.Drawing.Point(224, 227);
@@ -182,6 +183,7 @@ namespace BFC
             // 
             this.ActivityCombobox.AllowDrop = true;
             this.ActivityCombobox.CausesValidation = false;
+            this.ActivityCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ActivityCombobox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ActivityCombobox.FormattingEnabled = true;
             this.ActivityCombobox.Items.AddRange(new object[] {
@@ -216,11 +218,13 @@ namespace BFC
             // 
             this.HeightInput.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.HeightInput.Location = new System.Drawing.Point(156, 150);
+            this.HeightInput.MaxLength = 8;
             this.HeightInput.Name = "HeightInput";
             this.HeightInput.Size = new System.Drawing.Size(101, 29);
             this.HeightInput.TabIndex = 10;
             this.HeightInput.Text = "150";
             this.HeightInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.HeightInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.HeightInput_KeyPress);
             // 
             // HightLabel
             // 
@@ -246,11 +250,13 @@ namespace BFC
             // 
             this.WeightInput.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.WeightInput.Location = new System.Drawing.Point(156, 114);
+            this.WeightInput.MaxLength = 8;
             this.WeightInput.Name = "WeightInput";
             this.WeightInput.Size = new System.Drawing.Size(101, 29);
             this.WeightInput.TabIndex = 7;
             this.WeightInput.Text = "60";
             this.WeightInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.WeightInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WeightInput_KeyPress);
             // 
             // WeightLabel
             // 
@@ -276,11 +282,13 @@ namespace BFC
             // 
             this.AgeInput.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.AgeInput.Location = new System.Drawing.Point(156, 77);
+            this.AgeInput.MaxLength = 8;
             this.AgeInput.Name = "AgeInput";
             this.AgeInput.Size = new System.Drawing.Size(101, 29);
             this.AgeInput.TabIndex = 4;
             this.AgeInput.Text = "13";
             this.AgeInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.AgeInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AgeInput_KeyPress);
             // 
             // AgeLabel
             // 
@@ -358,6 +366,16 @@ namespace BFC
             this.Products.Text = "Продукты";
             this.Products.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(136, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(211, 20);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Выберите продукт из списка:";
+            // 
             // ProductResultUnitsLabel
             // 
             this.ProductResultUnitsLabel.AutoSize = true;
@@ -404,12 +422,14 @@ namespace BFC
             // 
             this.ProductWeightInput.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ProductWeightInput.Location = new System.Drawing.Point(156, 325);
+            this.ProductWeightInput.MaxLength = 10;
             this.ProductWeightInput.Name = "ProductWeightInput";
             this.ProductWeightInput.Size = new System.Drawing.Size(155, 29);
             this.ProductWeightInput.TabIndex = 9;
             this.ProductWeightInput.Text = "0";
             this.ProductWeightInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ProductWeightInput.TextChanged += new System.EventHandler(this.ProductWeightInput_TextChanged);
+            this.ProductWeightInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ProductWeightInput_KeyPress);
             // 
             // ProductWeightLabel
             // 
@@ -432,7 +452,7 @@ namespace BFC
             this.InfoGroupBox.Controls.Add(this.FatsOutput);
             this.InfoGroupBox.Controls.Add(this.FatsLabel);
             this.InfoGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.InfoGroupBox.Location = new System.Drawing.Point(49, 120);
+            this.InfoGroupBox.Location = new System.Drawing.Point(75, 118);
             this.InfoGroupBox.Name = "InfoGroupBox";
             this.InfoGroupBox.Size = new System.Drawing.Size(323, 190);
             this.InfoGroupBox.TabIndex = 6;
@@ -532,6 +552,7 @@ namespace BFC
             // ProductsCombobox
             // 
             this.ProductsCombobox.DisplayMember = "Name";
+            this.ProductsCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ProductsCombobox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ProductsCombobox.FormattingEnabled = true;
             this.ProductsCombobox.Location = new System.Drawing.Point(136, 83);
@@ -539,16 +560,6 @@ namespace BFC
             this.ProductsCombobox.Size = new System.Drawing.Size(210, 29);
             this.ProductsCombobox.TabIndex = 3;
             this.ProductsCombobox.SelectedIndexChanged += new System.EventHandler(this.ProductsCombobox_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(136, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(211, 20);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Выберите продукт из списка:";
             // 
             // Main
             // 

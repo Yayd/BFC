@@ -57,6 +57,7 @@ namespace BFC.View
             // 
             // CategoryComboBox
             // 
+            this.CategoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CategoryComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CategoryComboBox.FormattingEnabled = true;
             this.CategoryComboBox.Location = new System.Drawing.Point(196, 27);
@@ -78,6 +79,7 @@ namespace BFC.View
             // 
             this.NameInput.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.NameInput.Location = new System.Drawing.Point(196, 71);
+            this.NameInput.MaxLength = 50;
             this.NameInput.Name = "NameInput";
             this.NameInput.Size = new System.Drawing.Size(188, 29);
             this.NameInput.TabIndex = 3;
@@ -96,6 +98,7 @@ namespace BFC.View
             // 
             this.CaloriesInput.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CaloriesInput.Location = new System.Drawing.Point(196, 116);
+            this.CaloriesInput.MaxLength = 9;
             this.CaloriesInput.Name = "CaloriesInput";
             this.CaloriesInput.Size = new System.Drawing.Size(86, 29);
             this.CaloriesInput.TabIndex = 5;
@@ -105,6 +108,7 @@ namespace BFC.View
             // 
             this.ProteinsInput.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ProteinsInput.Location = new System.Drawing.Point(196, 160);
+            this.ProteinsInput.MaxLength = 9;
             this.ProteinsInput.Name = "ProteinsInput";
             this.ProteinsInput.Size = new System.Drawing.Size(86, 29);
             this.ProteinsInput.TabIndex = 6;
@@ -114,6 +118,7 @@ namespace BFC.View
             // 
             this.FatInput.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FatInput.Location = new System.Drawing.Point(196, 204);
+            this.FatInput.MaxLength = 9;
             this.FatInput.Name = "FatInput";
             this.FatInput.Size = new System.Drawing.Size(86, 29);
             this.FatInput.TabIndex = 7;
@@ -123,6 +128,7 @@ namespace BFC.View
             // 
             this.CarboInput.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CarboInput.Location = new System.Drawing.Point(196, 248);
+            this.CarboInput.MaxLength = 9;
             this.CarboInput.Name = "CarboInput";
             this.CarboInput.Size = new System.Drawing.Size(86, 29);
             this.CarboInput.TabIndex = 8;

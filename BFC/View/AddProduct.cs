@@ -34,7 +34,7 @@ namespace BFC.View
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            if (CaloriesInput.Text == "" || FatInput.Text == "" || CarboInput.Text == "" || ProteinsInput.Text == "" || NameInput.Text == "")
+            if (CaloriesInput.Text.Trim() == "" || FatInput.Text.Trim() == "" || CarboInput.Text.Trim() == "" || ProteinsInput.Text.Trim() == "" || NameInput.Text.Trim() == "")
             { 
                 MessageBox.Show("Пожалуйста заполните все поля.");
                 return;
@@ -42,11 +42,11 @@ namespace BFC.View
 
 
             _entityManager.SaveOrUpdate<FoodList>(_controllerDataBase.AddToDB
-                (NameInput.Text,
-                Double.Parse(ProteinsInput.Text),
-                Double.Parse(FatInput.Text),
-                Double.Parse(CarboInput.Text),
-                Int32.Parse(CaloriesInput.Text),
+                (NameInput.Text.Trim(),
+                Double.Parse(ProteinsInput.Text.Trim()),
+                Double.Parse(FatInput.Text.Trim()),
+                Double.Parse(CarboInput.Text.Trim()),
+                Int32.Parse(CaloriesInput.Text.Trim()),
                 _listOfCategories[CategoryComboBox.SelectedIndex])
                 );
 
@@ -68,7 +68,8 @@ namespace BFC.View
 
         private void CaloriesInput_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(char.IsDigit(e.KeyChar)))
+            char number = e.KeyChar;
+            if (!(char.IsDigit(e.KeyChar)) && number != 8)
                 e.Handled = true;
             else
                 e.Handled = false;
@@ -76,7 +77,8 @@ namespace BFC.View
 
         private void ProteinsInput_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(char.IsDigit(e.KeyChar)))
+            char number = e.KeyChar;
+            if (!(char.IsDigit(e.KeyChar)) && number != 8)
                 e.Handled = true;
             else
                 e.Handled = false;
@@ -84,7 +86,8 @@ namespace BFC.View
 
         private void FatInput_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(char.IsDigit(e.KeyChar)))
+            char number = e.KeyChar;
+            if (!(char.IsDigit(e.KeyChar)) && number != 8)
                 e.Handled = true;
             else
                 e.Handled = false;
@@ -92,7 +95,8 @@ namespace BFC.View
 
         private void CarboInput_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(char.IsDigit(e.KeyChar)))
+            char number = e.KeyChar;
+            if (!(char.IsDigit(e.KeyChar)) && number != 8)
                 e.Handled = true;
             else
                 e.Handled = false;

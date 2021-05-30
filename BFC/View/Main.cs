@@ -125,15 +125,16 @@ namespace BFC
         /// </summary>
         private void CalculateButton_Click(object sender, EventArgs e)
         {
-            if ((AgeInput.Text == "") || (WeightInput.Text == "") || (HeightInput.Text == ""))
+            if ((AgeInput.Text.Trim() == "") || (WeightInput.Text.Trim() == "") || (HeightInput.Text.Trim() == ""))
             {
                 MessageBox.Show("Заполните все поля");
                 return;
             }
+            
             var sex = MaleRadioButton.Checked;
-            var age = double.Parse(AgeInput.Text);
-            var weight = double.Parse(WeightInput.Text);
-            var height = double.Parse(HeightInput.Text);
+            var age = double.Parse(AgeInput.Text.Trim());
+            var weight = double.Parse(WeightInput.Text.Trim());
+            var height = double.Parse(HeightInput.Text.Trim());
             var activity = (Activity)ActivityCombobox.SelectedIndex;
             var plan = (Plan)PlanCombobox.SelectedIndex;
             var formula = GetChoosenFormula();
@@ -143,7 +144,7 @@ namespace BFC
         }
 
         private EFormula GetChoosenFormula()
-        {   //очень узкий метод. К нему следует относиться с осторожностью
+        {
              return EFormula.MifflinSanGeora;
         }
         private void CalcProd()
@@ -187,6 +188,46 @@ namespace BFC
         private void ProductWeightInput_TextChanged(object sender, EventArgs e)
         {
             CalcProd();
+        }
+
+        private void AgeInput_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+
+            if (!Char.IsDigit(number) && number != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void WeightInput_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+
+            if (!Char.IsDigit(number) && number != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void HeightInput_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+
+            if (!Char.IsDigit(number) && number != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void ProductWeightInput_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+
+            if (!Char.IsDigit(number) && number != 8)
+            {
+                e.Handled = true;
+            }
         }
     }
 }
