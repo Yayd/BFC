@@ -35,10 +35,6 @@ namespace BFC
             this.ResultAfterLabel = new System.Windows.Forms.Label();
             this.ResutlOutput = new System.Windows.Forms.TextBox();
             this.ResultLabel = new System.Windows.Forms.Label();
-            this.FormulaGroupBox = new System.Windows.Forms.GroupBox();
-            this.SecondFormulaRB = new System.Windows.Forms.RadioButton();
-            this.FirstFormulaRB = new System.Windows.Forms.RadioButton();
-            this.FormuaLabel = new System.Windows.Forms.Label();
             this.PlanCombobox = new System.Windows.Forms.ComboBox();
             this.PlanLabel = new System.Windows.Forms.Label();
             this.ActivityCombobox = new System.Windows.Forms.ComboBox();
@@ -57,7 +53,6 @@ namespace BFC
             this.FemaleRadioButton = new System.Windows.Forms.RadioButton();
             this.MaleRadioButton = new System.Windows.Forms.RadioButton();
             this.Products = new System.Windows.Forms.TabPage();
-            this.ProductCalculateButton = new System.Windows.Forms.Button();
             this.ProductResultUnitsLabel = new System.Windows.Forms.Label();
             this.ProductResultOutput = new System.Windows.Forms.TextBox();
             this.ProductResultLabel = new System.Windows.Forms.Label();
@@ -74,11 +69,10 @@ namespace BFC
             this.FatsOutput = new System.Windows.Forms.TextBox();
             this.FatsLabel = new System.Windows.Forms.Label();
             this.AddProductButton = new System.Windows.Forms.Button();
-            this.ProductsLabel = new System.Windows.Forms.Label();
             this.ProductsCombobox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.AllTabs.SuspendLayout();
             this.Calculator.SuspendLayout();
-            this.FormulaGroupBox.SuspendLayout();
             this.SexBox.SuspendLayout();
             this.Products.SuspendLayout();
             this.InfoGroupBox.SuspendLayout();
@@ -100,8 +94,6 @@ namespace BFC
             this.Calculator.Controls.Add(this.ResultAfterLabel);
             this.Calculator.Controls.Add(this.ResutlOutput);
             this.Calculator.Controls.Add(this.ResultLabel);
-            this.Calculator.Controls.Add(this.FormulaGroupBox);
-            this.Calculator.Controls.Add(this.FormuaLabel);
             this.Calculator.Controls.Add(this.PlanCombobox);
             this.Calculator.Controls.Add(this.PlanLabel);
             this.Calculator.Controls.Add(this.ActivityCombobox);
@@ -142,9 +134,9 @@ namespace BFC
             this.ResultAfterLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ResultAfterLabel.Location = new System.Drawing.Point(317, 376);
             this.ResultAfterLabel.Name = "ResultAfterLabel";
-            this.ResultAfterLabel.Size = new System.Drawing.Size(45, 21);
+            this.ResultAfterLabel.Size = new System.Drawing.Size(70, 21);
             this.ResultAfterLabel.TabIndex = 20;
-            this.ResultAfterLabel.Text = "ккал.";
+            this.ResultAfterLabel.Text = "ккал/сут";
             // 
             // ResutlOutput
             // 
@@ -166,54 +158,6 @@ namespace BFC
             this.ResultLabel.Size = new System.Drawing.Size(83, 21);
             this.ResultLabel.TabIndex = 18;
             this.ResultLabel.Text = "Результат:";
-            // 
-            // FormulaGroupBox
-            // 
-            this.FormulaGroupBox.Controls.Add(this.SecondFormulaRB);
-            this.FormulaGroupBox.Controls.Add(this.FirstFormulaRB);
-            this.FormulaGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FormulaGroupBox.Location = new System.Drawing.Point(224, 262);
-            this.FormulaGroupBox.Name = "FormulaGroupBox";
-            this.FormulaGroupBox.Size = new System.Drawing.Size(236, 66);
-            this.FormulaGroupBox.TabIndex = 17;
-            this.FormulaGroupBox.TabStop = false;
-            // 
-            // SecondFormulaRB
-            // 
-            this.SecondFormulaRB.AutoSize = true;
-            this.SecondFormulaRB.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SecondFormulaRB.Location = new System.Drawing.Point(6, 38);
-            this.SecondFormulaRB.Name = "SecondFormulaRB";
-            this.SecondFormulaRB.Size = new System.Drawing.Size(168, 25);
-            this.SecondFormulaRB.TabIndex = 1;
-            this.SecondFormulaRB.TabStop = true;
-            this.SecondFormulaRB.Tag = "1";
-            this.SecondFormulaRB.Text = "Харриса-Бенедикта";
-            this.SecondFormulaRB.UseVisualStyleBackColor = true;
-            // 
-            // FirstFormulaRB
-            // 
-            this.FirstFormulaRB.AutoSize = true;
-            this.FirstFormulaRB.Checked = true;
-            this.FirstFormulaRB.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.FirstFormulaRB.Location = new System.Drawing.Point(6, 7);
-            this.FirstFormulaRB.Name = "FirstFormulaRB";
-            this.FirstFormulaRB.Size = new System.Drawing.Size(192, 25);
-            this.FirstFormulaRB.TabIndex = 0;
-            this.FirstFormulaRB.TabStop = true;
-            this.FirstFormulaRB.Tag = "0";
-            this.FirstFormulaRB.Text = "Миффлина-Сан Жеора";
-            this.FirstFormulaRB.UseVisualStyleBackColor = true;
-            // 
-            // FormuaLabel
-            // 
-            this.FormuaLabel.AutoSize = true;
-            this.FormuaLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.FormuaLabel.Location = new System.Drawing.Point(80, 271);
-            this.FormuaLabel.Name = "FormuaLabel";
-            this.FormuaLabel.Size = new System.Drawing.Size(138, 21);
-            this.FormuaLabel.TabIndex = 16;
-            this.FormuaLabel.Text = "Формула расчета:";
             // 
             // PlanCombobox
             // 
@@ -396,7 +340,7 @@ namespace BFC
             // 
             // Products
             // 
-            this.Products.Controls.Add(this.ProductCalculateButton);
+            this.Products.Controls.Add(this.label1);
             this.Products.Controls.Add(this.ProductResultUnitsLabel);
             this.Products.Controls.Add(this.ProductResultOutput);
             this.Products.Controls.Add(this.ProductResultLabel);
@@ -405,7 +349,6 @@ namespace BFC
             this.Products.Controls.Add(this.ProductWeightLabel);
             this.Products.Controls.Add(this.InfoGroupBox);
             this.Products.Controls.Add(this.AddProductButton);
-            this.Products.Controls.Add(this.ProductsLabel);
             this.Products.Controls.Add(this.ProductsCombobox);
             this.Products.Location = new System.Drawing.Point(4, 24);
             this.Products.Name = "Products";
@@ -414,17 +357,6 @@ namespace BFC
             this.Products.TabIndex = 1;
             this.Products.Text = "Продукты";
             this.Products.UseVisualStyleBackColor = true;
-            // 
-            // ProductCalculateButton
-            // 
-            this.ProductCalculateButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ProductCalculateButton.Location = new System.Drawing.Point(156, 431);
-            this.ProductCalculateButton.Name = "ProductCalculateButton";
-            this.ProductCalculateButton.Size = new System.Drawing.Size(155, 37);
-            this.ProductCalculateButton.TabIndex = 14;
-            this.ProductCalculateButton.Text = "Рассчитать";
-            this.ProductCalculateButton.UseVisualStyleBackColor = true;
-            this.ProductCalculateButton.Click += new System.EventHandler(this.ProductCalculateButton_Click);
             // 
             // ProductResultUnitsLabel
             // 
@@ -446,6 +378,7 @@ namespace BFC
             this.ProductResultOutput.Name = "ProductResultOutput";
             this.ProductResultOutput.Size = new System.Drawing.Size(155, 29);
             this.ProductResultOutput.TabIndex = 12;
+            this.ProductResultOutput.TextChanged += new System.EventHandler(this.ProductResultOutput_TextChanged);
             // 
             // ProductResultLabel
             // 
@@ -461,7 +394,7 @@ namespace BFC
             // 
             this.WeightUnitsLabel.AutoSize = true;
             this.WeightUnitsLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.WeightUnitsLabel.Location = new System.Drawing.Point(319, 295);
+            this.WeightUnitsLabel.Location = new System.Drawing.Point(317, 328);
             this.WeightUnitsLabel.Name = "WeightUnitsLabel";
             this.WeightUnitsLabel.Size = new System.Drawing.Size(72, 21);
             this.WeightUnitsLabel.TabIndex = 10;
@@ -470,18 +403,19 @@ namespace BFC
             // ProductWeightInput
             // 
             this.ProductWeightInput.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ProductWeightInput.Location = new System.Drawing.Point(156, 292);
+            this.ProductWeightInput.Location = new System.Drawing.Point(156, 325);
             this.ProductWeightInput.Name = "ProductWeightInput";
             this.ProductWeightInput.Size = new System.Drawing.Size(155, 29);
             this.ProductWeightInput.TabIndex = 9;
             this.ProductWeightInput.Text = "0";
             this.ProductWeightInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ProductWeightInput.TextChanged += new System.EventHandler(this.ProductWeightInput_TextChanged);
             // 
             // ProductWeightLabel
             // 
             this.ProductWeightLabel.AutoSize = true;
             this.ProductWeightLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ProductWeightLabel.Location = new System.Drawing.Point(42, 295);
+            this.ProductWeightLabel.Location = new System.Drawing.Point(42, 328);
             this.ProductWeightLabel.Name = "ProductWeightLabel";
             this.ProductWeightLabel.Size = new System.Drawing.Size(108, 21);
             this.ProductWeightLabel.TabIndex = 8;
@@ -498,9 +432,9 @@ namespace BFC
             this.InfoGroupBox.Controls.Add(this.FatsOutput);
             this.InfoGroupBox.Controls.Add(this.FatsLabel);
             this.InfoGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.InfoGroupBox.Location = new System.Drawing.Point(23, 75);
+            this.InfoGroupBox.Location = new System.Drawing.Point(49, 120);
             this.InfoGroupBox.Name = "InfoGroupBox";
-            this.InfoGroupBox.Size = new System.Drawing.Size(448, 190);
+            this.InfoGroupBox.Size = new System.Drawing.Size(323, 190);
             this.InfoGroupBox.TabIndex = 6;
             this.InfoGroupBox.TabStop = false;
             // 
@@ -587,7 +521,7 @@ namespace BFC
             // AddProductButton
             // 
             this.AddProductButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.AddProductButton.Location = new System.Drawing.Point(378, 36);
+            this.AddProductButton.Location = new System.Drawing.Point(369, 83);
             this.AddProductButton.Name = "AddProductButton";
             this.AddProductButton.Size = new System.Drawing.Size(29, 29);
             this.AddProductButton.TabIndex = 5;
@@ -595,26 +529,26 @@ namespace BFC
             this.AddProductButton.UseVisualStyleBackColor = true;
             this.AddProductButton.Click += new System.EventHandler(this.AddProductButton_Click);
             // 
-            // ProductsLabel
-            // 
-            this.ProductsLabel.AutoSize = true;
-            this.ProductsLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ProductsLabel.Location = new System.Drawing.Point(90, 39);
-            this.ProductsLabel.Name = "ProductsLabel";
-            this.ProductsLabel.Size = new System.Drawing.Size(66, 21);
-            this.ProductsLabel.TabIndex = 4;
-            this.ProductsLabel.Text = "Продкт:";
-            // 
             // ProductsCombobox
             // 
             this.ProductsCombobox.DisplayMember = "Name";
             this.ProductsCombobox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ProductsCombobox.FormattingEnabled = true;
-            this.ProductsCombobox.Location = new System.Drawing.Point(162, 36);
+            this.ProductsCombobox.Location = new System.Drawing.Point(136, 83);
             this.ProductsCombobox.Name = "ProductsCombobox";
             this.ProductsCombobox.Size = new System.Drawing.Size(210, 29);
             this.ProductsCombobox.TabIndex = 3;
             this.ProductsCombobox.SelectedIndexChanged += new System.EventHandler(this.ProductsCombobox_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(136, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(211, 20);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Выберите продукт из списка:";
             // 
             // Main
             // 
@@ -627,8 +561,6 @@ namespace BFC
             this.AllTabs.ResumeLayout(false);
             this.Calculator.ResumeLayout(false);
             this.Calculator.PerformLayout();
-            this.FormulaGroupBox.ResumeLayout(false);
-            this.FormulaGroupBox.PerformLayout();
             this.SexBox.ResumeLayout(false);
             this.SexBox.PerformLayout();
             this.Products.ResumeLayout(false);
@@ -659,10 +591,6 @@ namespace BFC
         private System.Windows.Forms.Label YearLabel;
         private System.Windows.Forms.TextBox AgeInput;
         private System.Windows.Forms.Label AgeLabel;
-        private System.Windows.Forms.GroupBox FormulaGroupBox;
-        private System.Windows.Forms.RadioButton SecondFormulaRB;
-        private System.Windows.Forms.RadioButton FirstFormulaRB;
-        private System.Windows.Forms.Label FormuaLabel;
         private System.Windows.Forms.ComboBox PlanCombobox;
         private System.Windows.Forms.Label PlanLabel;
         private System.Windows.Forms.Label ResultAfterLabel;
@@ -670,7 +598,6 @@ namespace BFC
         private System.Windows.Forms.Label ResultLabel;
         private System.Windows.Forms.Button CalculateButton;
         private System.Windows.Forms.Button AddProductButton;
-        private System.Windows.Forms.Label ProductsLabel;
         private System.Windows.Forms.ComboBox ProductsCombobox;
         private System.Windows.Forms.GroupBox InfoGroupBox;
         private System.Windows.Forms.TextBox CaloriesOutput;
@@ -684,13 +611,13 @@ namespace BFC
         private System.Windows.Forms.TextBox FatsOutput;
         private System.Windows.Forms.Label FatsLabel;
         private System.Windows.Forms.Label be;
-        private System.Windows.Forms.Button ProductCalculateButton;
         private System.Windows.Forms.Label ProductResultUnitsLabel;
         private System.Windows.Forms.TextBox product;
         private System.Windows.Forms.Label ProductResultLabel;
         private System.Windows.Forms.Label WeightUnitsLabel;
         private System.Windows.Forms.TextBox ProductWeightInput;
         private System.Windows.Forms.TextBox ProductResultOutput;
+        private System.Windows.Forms.Label label1;
     }
 }
 

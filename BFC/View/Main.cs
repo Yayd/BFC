@@ -59,9 +59,31 @@ namespace BFC
             InitializeActivityCombobox();
             InitializePlanCombobox();
             InitializeProducts();
+            InitializeData();
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.SetToolTip(this.AddProductButton, "Добавить в список новый продукт");
         }
 
-
+        private void InitializeData()
+        {
+            FieldController loader = new FieldController();
+            Dictionary<string, string> userData = loader.ReadFields(); 
+            if (userData == null)
+            {
+                return;
+            }
+            if (userData["sex: "] == "1")
+            {
+                MaleRadioButton.Checked = true;
+            }
+            else 
+            {
+                FemaleRadioButton.Checked = true;
+            }
+            AgeInput.Text = userData["age: "];
+            WeightInput.Text = userData["weight: "];
+            HeightInput.Text = userData["height: "];
+        }
         private void InitializeActivityCombobox()
         {
             ActivityCombobox.DataSource = new BindingSource(_activities, null);
@@ -103,6 +125,11 @@ namespace BFC
         /// </summary>
         private void CalculateButton_Click(object sender, EventArgs e)
         {
+            if ((AgeInput.Text == "") || (WeightInput.Text == "") || (HeightInput.Text == ""))
+            {
+                MessageBox.Show("Заполните все поля");
+                return;
+            }
             var sex = MaleRadioButton.Checked;
             var age = double.Parse(AgeInput.Text);
             var weight = double.Parse(WeightInput.Text);
@@ -110,30 +137,35 @@ namespace BFC
             var activity = (Activity)ActivityCombobox.SelectedIndex;
             var plan = (Plan)PlanCombobox.SelectedIndex;
             var formula = GetChoosenFormula();
-
+            FieldController saver = new FieldController(sex, age, weight, height);
+            saver.WriteFields();
             ResutlOutput.Text = Calculate.GetCalculateCalories(sex, age, weight, height, activity, plan, formula);
         }
 
         private EFormula GetChoosenFormula()
         {   //очень узкий метод. К нему следует относиться с осторожностью
-            if(FirstFormulaRB.Checked)
+             return EFormula.MifflinSanGeora;
+        }
+        private void CalcProd()
+        {
+            double weight;
+            if (ProductWeightInput.Text == "")
             {
-                return EFormula.MifflinSanGeora;
+                weight = 0.0;
             }
             else
             {
-                return EFormula.HarrisBenedict;
+                weight = double.Parse(ProductWeightInput.Text);
             }
-        }
-
-        private void ProductCalculateButton_Click(object sender, EventArgs e)
-        {
             var product = ProductsCombobox.SelectedIndex;
-            var weight = double.Parse(ProductWeightInput.Text);
             var calories = (double)_listOfProducts[product].Calories;
 
             var result = Calculate.GetProductCalories(weight, calories);
             ProductResultOutput.Text = result;
+        }
+        private void ProductCalculateButton_Click(object sender, EventArgs e)
+        {
+            CalcProd();
         }
 
         private void ProductsCombobox_SelectedIndexChanged(object sender, EventArgs e)
@@ -144,6 +176,17 @@ namespace BFC
             ProteinsOutput.Text = _listOfProducts[product].Proteins.ToString();
             FatsOutput.Text = _listOfProducts[product].Fats.ToString();
             CarboOutput.Text = _listOfProducts[product].Carbohydrates.ToString();
+            CalcProd();
+        }
+
+        private void ProductResultOutput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ProductWeightInput_TextChanged(object sender, EventArgs e)
+        {
+            CalcProd();
         }
     }
 }
